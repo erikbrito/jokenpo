@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app id="inspire">
+
+      <v-app-bar
+        app
+      >
+        <v-toolbar-title>JOKENPÔ</v-toolbar-title>
+      </v-app-bar>
+  
+      <v-content class="background">
+        
+        <v-layout align-center justify-center fill-height>
+
+          <v-card class="cardContent">
+            
+            <div class="allContent">
+    
+              <div class="buttons">
+                <v-row :justify="justify">
+                  <div class="ma-3 button">
+                    <v-btn color="grey" class="button" @click="jokenpo('pedra')">
+                      <img class="images" src="src/pedra.png" alt="">
+                    </v-btn>
+                  </div>
+                  <div class="ma-3 button">
+                    <v-btn color="grey" class="button" @click="jokenpo('papel')">
+                      <img class="images" src="src/papel.png" alt="">
+                    </v-btn>
+                  </div>
+                  <div class="ma-3 button">
+                    <v-btn color="grey" class="button" @click="jokenpo('tesoura')">
+                      <img class="images" src="src/tesoura.png" alt="">
+                    </v-btn>
+                  </div>
+                </v-row>
+              </div>
+
+              <div class="divChoises">
+                <div class="scores"> USER - {{ User }} | CPU - {{ CPU }} </div>
+                <div class="choises choisesUser">
+                  <img class="images" :src="choisesUser" alt="">
+                </div>
+                <div class="vs"> VS </div>
+                <div class="choises choisesCPU">
+                  <img class="images" :src="choisesCPU" alt="">
+                </div>
+              </div>
+
+              <div class="result" :style="{ background: activeColor }"> {{ result }} </div>
+    
+            </div>
+
+          </v-card>
+            
+        </v-layout>
+  
+      </v-content>
+  
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  
+  <script>
+
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: () => ({
+      drawer: null,
+      justify: 'center',
+      User: 0,
+      CPU: 0,
+      options: ['pedra', 'papel', 'tesoura'],
+      result: 'result',
+      choisesUser: 'src/question.png',
+      choisesCPU: 'src/question.png',
+      valid: 'false',
+      activeColor: '#9e9e9e',
+    }),
+
+    created () {
+      this.$vuetify.theme.dark = true
+    },
+
+    methods: {
+      jokenpo(value) {
+          
+          let chooseUser = value
+  
+          let chooseCPU = this.options[Math.floor(Math.random()*this.options.length)]
+
+          switch (chooseUser) {
+
+            case 'pedra':
+
+              if (chooseCPU == 'pedra'){
+                this.result = "Draw!"
+                this.choisesUser = 'src/pedra.png'
+                this.choisesCPU = 'src/pedra.png'
+                this.activeColor = '#fbd336'
+              }
+              if (chooseCPU == 'tesoura'){
+                this.result = "YOU Win!"
+                this.choisesUser = 'src/pedra.png'
+                this.choisesCPU = 'src/tesoura.png'
+                this.User++
+                this.activeColor = '#50e22b'
+              }
+              if (chooseCPU == 'papel'){
+                this.result = "You Lose!"
+                this.choisesUser = 'src/pedra.png'
+                this.choisesCPU = 'src/papel.png'
+                this.CPU++
+                this.activeColor = '#e22b2b'
+              }
+              
+            break
+
+            case 'papel':
+
+              if (chooseCPU == 'pedra'){
+                this.result = "You Win!"
+                this.choisesUser = 'src/papel.png'
+                this.choisesCPU = 'src/pedra.png'
+                this.User++
+                this.activeColor = '#50e22b'
+              }
+              if (chooseCPU == 'papel'){
+                this.result = "Draw!"
+                this.choisesUser = 'src/papel.png'
+                this.choisesCPU = 'src/papel.png'
+                this.activeColor = '#fbd336'
+              }
+              if (chooseCPU == 'tesoura'){
+                this.result = "You Lose!"
+                this.choisesUser = 'src/papel.png'
+                this.choisesCPU = 'src/tesoura.png'
+                this.CPU++
+                this.activeColor = '#e22b2b'
+              }
+
+            break
+
+            case "tesoura":
+
+              if (chooseCPU == 'papel'){
+                this.result = "You Win!"
+                this.choisesUser = 'src/tesoura.png'
+                this.choisesCPU = 'src/papel.png'
+                this.User++
+                this.activeColor = '#50e22b'
+              }
+              if (chooseCPU == 'pedra'){
+                this.result = "You Lose!"
+                this.choisesUser = 'src/tesoura.png'
+                this.choisesCPU = 'src/pedra.png'
+                this.CPU++
+                this.activeColor = '#e22b2b'
+              }
+              if (chooseCPU == 'tesoura'){
+                this.result = "Draw!"
+                this.choisesUser = 'src/tesoura.png'
+                this.choisesCPU = 'src/tesoura.png'
+                this.activeColor = '#fbd336'
+              }
+
+            break
+          
+          } //switch
+
+      } //jokenpo()
+    }
+    })
+  </script>
+
+<style scoped>
+  html { 
+    overflow-y: auto;
+  }
+   .background {
+     background-color: #342ead;
+   }
+   .cardContent{
+    height: auto;
+    background-color: white!important;
+    padding: 2%;
+    border-radius: 12px!important;
+    overflow: hidden;
+   }
+   .allContent{
+     height: 100%;
+   }
+   .button {
+     height: auto!important;
+   }
+   .divChoises{
+     display: inline-block;
+     width: 100%;
+     text-align: center;
+   }
+   .result{
+    font-size: x-large;
+    padding: 0.5em;
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
+   }
+   .scores{
+    position: relative;
+    color: #f2a51a;
+    bottom: 0;
+    margin: auto;
+    font-size: -webkit-xxx-large;
+    font-family: 'Audiowide', cursive;
+   }
+   .vs{
+    position: relative;
+    float: left;
+    color: #f2a51a;
+    margin: 1em auto;
+    width: 50%;
+    font-size: -webkit-xxx-large;
+    font-family: 'Audiowide', cursive;
+   }
+   .choises{
+    position: relative;
+    color: black;
+    bottom: 0;
+    margin: auto;
+    font-size: -webkit-xxx-large;
+   }
+   .choisesUser{
+     float: left;
+   }
+   .choisesCPU{
+     float: right;
+   }
+
+   @media (max-width: 824px) {
+     .images{
+       width: 50%;
+     }
+     .vs{
+      margin: auto;
+    }
+   }
+   
+   @media (max-width: 414px) {
+     .scores{
+      font-size: x-large;
+     }
+     .vs{
+      width: 18%;
+      font-size: xx-large;
+      margin: 0.5em auto;
+    }
+   }
+
+   @media (max-width: 361px) {
+     .scores{
+      font-size: x-large;
+     }
+     .vs{
+      width: 18%;
+      font-size: xx-large;
+      margin: 0.5em auto;
+    }
+   }
+   
+   @media (max-width: 321px) {
+    .choises{
+      width: 40%;
+    }
+   }
+
+  </style>
+</body>
+</html>
