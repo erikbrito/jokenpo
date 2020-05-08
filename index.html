@@ -69,6 +69,109 @@
     </v-app>
   </div>
 
+<style scoped>
+  html { 
+    overflow-y: auto;
+  }
+   .background {
+     background-color: #342ead;
+   }
+   .cardContent{
+    height: auto;
+    background-color: white!important;
+    padding: 2%;
+    border-radius: 12px!important;
+    overflow: hidden;
+   }
+   .allContent{
+     height: 100%;
+   }
+   .button {
+     height: auto!important;
+   }
+   .divChoises{
+     display: inline-block;
+     width: 100%;
+     text-align: center;
+   }
+   .result{
+    font-size: x-large;
+    padding: 0.5em;
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
+   }
+   .scores{
+    position: relative;
+    color: #f2a51a;
+    bottom: 0;
+    margin: auto;
+    font-size: -webkit-xxx-large;
+    font-family: 'Audiowide', cursive;
+   }
+   .vs{
+    position: relative;
+    float: left;
+    color: #f2a51a;
+    margin: 1em auto;
+    width: 50%;
+    font-size: -webkit-xxx-large;
+    font-family: 'Audiowide', cursive;
+   }
+   .choises{
+    position: relative;
+    color: black;
+    bottom: 0;
+    margin: auto;
+    font-size: -webkit-xxx-large;
+   }
+   .choisesUser{
+     float: left;
+   }
+   .choisesCPU{
+     float: right;
+   }
+
+   @media (max-width: 824px) {
+     .images{
+       width: 50%;
+     }
+     .vs{
+      margin: auto;
+    }
+   }
+   
+   @media (max-width: 414px) {
+     .scores{
+      font-size: x-large;
+     }
+     .vs{
+      width: 18%;
+      font-size: xx-large;
+      margin: 0.5em auto;
+    }
+   }
+
+   @media (max-width: 361px) {
+     .scores{
+      font-size: x-large;
+     }
+     .vs{
+      width: 18%;
+      font-size: xx-large;
+      margin: 0.5em auto;
+    }
+   }
+   
+   @media (max-width: 321px) {
+    .choises{
+      width: 40%;
+    }
+   }
+
+  </style>
+  
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   
@@ -184,108 +287,5 @@
     }
     })
   </script>
-
-<style scoped>
-  html { 
-    overflow-y: auto;
-  }
-   .background {
-     background-color: #342ead;
-   }
-   .cardContent{
-    height: auto;
-    background-color: white!important;
-    padding: 2%;
-    border-radius: 12px!important;
-    overflow: hidden;
-   }
-   .allContent{
-     height: 100%;
-   }
-   .button {
-     height: auto!important;
-   }
-   .divChoises{
-     display: inline-block;
-     width: 100%;
-     text-align: center;
-   }
-   .result{
-    font-size: x-large;
-    padding: 0.5em;
-    text-align: center;
-    border-radius: 10px;
-    font-family: 'Audiowide', cursive;
-    text-transform: uppercase;
-   }
-   .scores{
-    position: relative;
-    color: #f2a51a;
-    bottom: 0;
-    margin: auto;
-    font-size: -webkit-xxx-large;
-    font-family: 'Audiowide', cursive;
-   }
-   .vs{
-    position: relative;
-    float: left;
-    color: #f2a51a;
-    margin: 1em auto;
-    width: 50%;
-    font-size: -webkit-xxx-large;
-    font-family: 'Audiowide', cursive;
-   }
-   .choises{
-    position: relative;
-    color: black;
-    bottom: 0;
-    margin: auto;
-    font-size: -webkit-xxx-large;
-   }
-   .choisesUser{
-     float: left;
-   }
-   .choisesCPU{
-     float: right;
-   }
-
-   @media (max-width: 824px) {
-     .images{
-       width: 50%;
-     }
-     .vs{
-      margin: auto;
-    }
-   }
-   
-   @media (max-width: 414px) {
-     .scores{
-      font-size: x-large;
-     }
-     .vs{
-      width: 18%;
-      font-size: xx-large;
-      margin: 0.5em auto;
-    }
-   }
-
-   @media (max-width: 361px) {
-     .scores{
-      font-size: x-large;
-     }
-     .vs{
-      width: 18%;
-      font-size: xx-large;
-      margin: 0.5em auto;
-    }
-   }
-   
-   @media (max-width: 321px) {
-    .choises{
-      width: 40%;
-    }
-   }
-
-  </style>
 </body>
 </html>
